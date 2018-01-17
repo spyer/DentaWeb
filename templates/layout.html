@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RKDental Просмотр рентгена</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style type="text/css">
+        .image_small {
+            max-width: 150px;
+            max-height: 109px;
+        }
+        .image_big {
+            width: 100%;
+            height: auto;
+            max-width: none;
+            max-height: none;
+        }
+        body {
+          padding-top: 5rem;
+        }
+
+    </style>
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+    $( document ).ready(function() {
+        $( "img" ).click(function() {
+            $(this).toggleClass('image_big')
+         });
+        $( "img" ).dblclick(function() {
+            window.location.href =  $(this).attr('src');
+         });
+
+});
+    </script>
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>

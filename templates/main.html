@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="/">R.K.Dental</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/yesterday">Вчера</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/week">Неделя</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/month">Месяц</a>
+          </li>
+        </ul>
+        <form action="/search" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="name"  type="text" placeholder="Поиск" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        </form>
+      </div>
+    </nav>
+
+  {% for entry in entries %}
+    {% if loop.changed(entry.name) %}
+        <div class="row">
+        <div class="col">
+        <h1><a href="/search?name={{ entry.name }}">{{ entry.name }}</a></h1>
+    {% endif %}
+
+        <img src="{{ url_for('static', filename='images/s'+entry.cdate.strftime('%Y%m%d_%H%M%S'))+'_0000.jpg' }}" class="image_small">
+        <!-- <a>{{ entry.cdate.strftime('%Y%m%d_%H%M%S') }}</a> -->
+    {% if loop.changed(entry.name) %}
+        </div>
+        </div>
+        <div class="clearfix"></div>
+    {% endif %}
+
+  {% else %}
+    Не найдены записи в базе данных
+  {% endfor %}
+</div>
+{% endblock body %}
