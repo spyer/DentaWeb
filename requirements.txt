@@ -1,0 +1,4 @@
+gevent>=1.2
+Flask>=0.12
+pyodbc>=4
+Pillow>=5
