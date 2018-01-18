@@ -7,7 +7,7 @@ DentaWeb:
   
    
 To install on windows you need to:  
-1. Install Python 3.6 and insure 
+1. Install Python 3.6 and ensure it is in **PATH**  
 2. Install libraries (Flask, Pollow, gevent, pyodbc)  
 ```
 pip install -r requirements.txt  
